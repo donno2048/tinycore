@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>TinyCore online</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div id="screen_container">
+            <div style="white-space: pre; font: 15px monospace; line-height: 15px"></div>
+            <canvas></canvas>
+        </div>
+        <script src="./libv86.js"></script>
+        <script>
+            new V86Starter({
+                wasm_path: './v86.wasm',
+                memory_size: 1e8, // ~100MB
+                vga_memory_size: 1<<21,
+                screen_container : screen_container,
+                bios: {url: './seabios.bin'},
+                vga_bios: {url: './vgabios.bin'},
+                cdrom: {url: './TinyCore.iso'},
+                autostart: true
+            });
+        </script>
+    </body>
+</html>
